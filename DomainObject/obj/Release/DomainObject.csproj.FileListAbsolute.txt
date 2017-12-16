@@ -1,0 +1,7 @@
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\DomainObject\bin\Release\DomainObject.dll.config
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\DomainObject\bin\Release\DomainObject.dll
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\DomainObject\bin\Release\DomainObject.pdb
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\DomainObject\obj\Release\DomainObject.csprojResolveAssemblyReference.cache
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\DomainObject\obj\Release\DomainObject.csproj.CoreCompileInputs.cache
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\DomainObject\obj\Release\DomainObject.dll
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\DomainObject\obj\Release\DomainObject.pdb

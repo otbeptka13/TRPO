@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3450E51D-95C9-4D04-AA78-2809E726F51A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dbPankovES.UI</RootNamespace>
+    <AssemblyName>UI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddGoodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddGoodForm.Designer.cs">
+      <DependentUpon>AddGoodForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuForm .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuForm .Designer.cs">
+      <DependentUpon>MenuForm .cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowOrderGoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowOrderGoodsForm.Designer.cs">
+      <DependentUpon>ShowOrderGoodsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatsForm.Designer.cs">
+      <DependentUpon>StatsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplyForm.Designer.cs">
+      <DependentUpon>SupplyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowOrdersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowOrdersForm.Designer.cs">
+      <DependentUpon>ShowOrdersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerForm.Designer.cs">
+      <DependentUpon>SellerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddGoodForm.resx">
+      <DependentUpon>AddGoodForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuForm .resx">
+      <DependentUpon>MenuForm .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowOrderGoodsForm.resx">
+      <DependentUpon>ShowOrderGoodsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatsForm.resx">
+      <DependentUpon>StatsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplyForm.resx">
+      <DependentUpon>SupplyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowOrdersForm.resx">
+      <DependentUpon>ShowOrdersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerForm.resx">
+      <DependentUpon>SellerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomainObject\DomainObject.csproj">
+      <Project>{30e1b240-e071-427b-ae08-97bff687168e}</Project>
+      <Name>DomainObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.baseDataDataContext.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.Basket.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.Capacity.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.CapacityView.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.Employees.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.Goods.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.GoodSell.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.GoodsView.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.GoodTypes.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.OrderGoods.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.OrderGoodsView.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.Orders.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.OrdersView.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.Providers.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.Shops.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.ShopWorkers.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.ShopWorkersView.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.Supply.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.SupplyView.datasource" />
+    <None Include="Properties\DataSources\dbPankovES.DomainObject.Models.UserTypes.datasource" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

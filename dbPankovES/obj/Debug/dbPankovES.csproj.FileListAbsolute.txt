@@ -1,0 +1,13 @@
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\bin\Debug\dbPankovES.exe
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\bin\Debug\dbPankovES.pdb
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\bin\Debug\UI.dll
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\bin\Debug\UI.pdb
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\obj\Debug\dbPankovES.csprojResolveAssemblyReference.cache
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\obj\Debug\dbPankovES.Properties.Resources.resources
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\obj\Debug\dbPankovES.csproj.GenerateResource.Cache
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\obj\Debug\dbPankovES.csproj.CoreCompileInputs.cache
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\obj\Debug\dbPankovES.exe
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\obj\Debug\dbPankovES.pdb
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\bin\Debug\DomainObject.dll
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\bin\Debug\DomainObject.pdb
+C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\dbPankovES\bin\Debug\DomainObject.dll.config

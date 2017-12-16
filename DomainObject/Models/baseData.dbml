@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="pankoves" Class="baseDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=mssql6.gear.host;Initial Catalog=pankoves;User ID=pankoves" SettingsObjectName="dbPankovES.DomainObject.Properties.Settings" SettingsPropertyName="pankovesConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="store.Shops" Member="Shops">
+    <Type Name="Shops">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="adress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="timeOpen" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="timeClose" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="Shops_Orders" Member="Orders" ThisKey="id" OtherKey="shopId" Type="Orders" />
+      <Association Name="Shops_ShopWorkers" Member="ShopWorkers" ThisKey="id" OtherKey="shopId" Type="ShopWorkers" />
+      <Association Name="Shops_Capacity" Member="Capacity" ThisKey="id" OtherKey="shopId" Type="Capacity" />
+      <Association Name="Shops_Supply" Member="Supply" ThisKey="id" OtherKey="shopId" Type="Supply" />
+    </Type>
+  </Table>
+  <Table Name="store.Employees" Member="Employees">
+    <Type Name="Employees">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="f" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="i" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="o" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="login" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="passwordHash" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userType" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="Employees_Orders" Member="Orders" ThisKey="id" OtherKey="sellerId" Type="Orders" />
+      <Association Name="Employees_ShopWorkers" Member="ShopWorkers" ThisKey="id" OtherKey="workerId" Type="ShopWorkers" />
+      <Association Name="UserTypes_Employees" Member="UserTypes" ThisKey="userType" OtherKey="id" Type="UserTypes" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="store.UserTypes" Member="UserTypes">
+    <Type Name="UserTypes">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="UserTypes_Employees" Member="Employees" ThisKey="id" OtherKey="userType" Type="Employees" />
+    </Type>
+  </Table>
+  <Table Name="store.Goods" Member="Goods">
+    <Type Name="Goods">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="typeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="info" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Goods_OrderGoods" Member="OrderGoods" ThisKey="id" OtherKey="goodId" Type="OrderGoods" />
+      <Association Name="Goods_Capacity" Member="Capacity" ThisKey="id" OtherKey="goodId" Type="Capacity" />
+      <Association Name="Goods_Supply" Member="Supply" ThisKey="id" OtherKey="goodId" Type="Supply" />
+      <Association Name="GoodTypes_Goods" Member="GoodTypes" ThisKey="typeId" OtherKey="id" Type="GoodTypes" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.GoodTypes" Member="GoodTypes">
+    <Type Name="GoodTypes">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="info" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="GoodTypes_Goods" Member="Goods" ThisKey="id" OtherKey="typeId" Type="Goods" />
+    </Type>
+  </Table>
+  <Table Name="store.Orders" Member="Orders">
+    <Type Name="Orders">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sellerId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="shopId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="typePay" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Orders_OrderGoods" Member="OrderGoods" ThisKey="id" OtherKey="orderId" Type="OrderGoods" />
+      <Association Name="Employees_Orders" Member="Employees" ThisKey="sellerId" OtherKey="id" Type="Employees" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Shops_Orders" Member="Shops" ThisKey="shopId" OtherKey="id" Type="Shops" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.Providers" Member="Providers">
+    <Type Name="Providers">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="Providers_Supply" Member="Supply" ThisKey="id" OtherKey="providerId" Type="Supply" />
+    </Type>
+  </Table>
+  <Table Name="store.ShopWorkers" Member="ShopWorkers">
+    <Type Name="ShopWorkers">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="shopId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="workerId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="hireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Shops_ShopWorkers" Member="Shops" ThisKey="shopId" OtherKey="id" Type="Shops" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Employees_ShopWorkers" Member="Employees" ThisKey="workerId" OtherKey="id" Type="Employees" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.GoodsView" Member="GoodsView">
+    <Type Name="GoodsView">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="typeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="info" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="typeName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="typeInfo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.OrderGoodsView" Member="OrderGoodsView">
+    <Type Name="OrderGoodsView">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="orderPrice" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="typePay" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="goodName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="typeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="goodPrice" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="goodInfo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="typeName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="info" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="sellerId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="f" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="i" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="o" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="login" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="passwordHash" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="shopId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="adress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="timeOpen" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="timeClose" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="shopPhone" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.OrdersView" Member="OrdersView">
+    <Type Name="OrdersView" Id="ID1">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="typePay" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="sellerId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="f" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="i" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="o" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="login" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="passwordHash" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="shopId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="adress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="timeOpen" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="timeClose" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="shopPhone" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.OrderGoods" Member="OrderGoods">
+    <Type Name="OrderGoods">
+      <Column Name="orderId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="goodId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="count" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="priceOne" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="summ" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Association Name="Goods_OrderGoods" Member="Goods" ThisKey="goodId" OtherKey="id" Type="Goods" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Orders_OrderGoods" Member="Orders" ThisKey="orderId" OtherKey="id" Type="Orders" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.ShopWorkersView" Member="ShopWorkersView">
+    <Type Name="ShopWorkersView">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="shopId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="adress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="timeOpen" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="timeClose" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="shopPhone" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="workerid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="f" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="i" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="o" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="login" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="passwordHash" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userTypeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="userTypeName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.Capacity" Member="Capacity">
+    <Type Name="Capacity">
+      <Column Name="shopId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="goodId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="count" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Association Name="Goods_Capacity" Member="Goods" ThisKey="goodId" OtherKey="id" Type="Goods" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Shops_Capacity" Member="Shops" ThisKey="shopId" OtherKey="id" Type="Shops" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.Supply" Member="Supply">
+    <Type Name="Supply">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="providerId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="shopId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="goodId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="count" Type="System.Decimal" DbType="Decimal(5,3)" CanBeNull="true" />
+      <Column Name="supplyPriceOne" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="isAddedInStore" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Goods_Supply" Member="Goods" ThisKey="goodId" OtherKey="id" Type="Goods" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Providers_Supply" Member="Providers" ThisKey="providerId" OtherKey="id" Type="Providers" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Shops_Supply" Member="Shops" ThisKey="shopId" OtherKey="id" Type="Shops" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.SupplyView" Member="SupplyView">
+    <Type Name="SupplyView">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="providerId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="shopId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="adress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="timeOpen" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="timeClose" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="shopPhone" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="goodId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="goodName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="count" Type="System.Decimal" DbType="Decimal(5,3)" CanBeNull="true" />
+      <Column Name="typeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="goodInfo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="typeName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="info" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="store.CapacityView" Member="CapacityView">
+    <Type Name="CapacityView">
+      <Column Name="goodName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="count" Type="System.Decimal" DbType="Decimal(10,3)" CanBeNull="true" />
+      <Column Name="shopId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="adress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="timeOpen" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="timeClose" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="shopPhone" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="goodId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="typeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="goodPrice" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="goodInfo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="typeName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="info" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="store.TryLogin" Method="TryLogin" IsComposable="true">
+    <Parameter Name="login" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="password" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="store.AddOrderGood" Method="AddOrderGood">
+    <Parameter Name="orderId" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="goodId" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="count" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="priceOne" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="summ" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="store.PaysByDate" Method="PaysByDate" IsComposable="true">
+    <Parameter Name="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="toDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="store.CreateOrder" Method="CreateOrder">
+    <Parameter Name="sellerId" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="shopId" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="price" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="typePay" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="created" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="store.SupplySumByDate" Method="SupplySumByDate" IsComposable="true">
+    <Parameter Name="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="toDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Decimal" />
+  </Function>
+</Database>
