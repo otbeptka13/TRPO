@@ -17,3 +17,22 @@ C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\UI\obj\Debug\dbP
 C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\UI\obj\Debug\dbPankovES.UI.ReportForm.resources
 C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\UI\obj\Debug\dbPankovES.UI.SupplyForm.resources
 C:\Users\Egor-\Documents\Visual Studio 2012\Projects\dbPankovES\UI\obj\Debug\dbPankovES.UI.StatsForm.resources
+C:\Solutions\dbPankoves\UI\bin\Debug\UI.dll
+C:\Solutions\dbPankoves\UI\bin\Debug\UI.pdb
+C:\Solutions\dbPankoves\UI\bin\Debug\DomainObject.dll
+C:\Solutions\dbPankoves\UI\bin\Debug\DomainObject.pdb
+C:\Solutions\dbPankoves\UI\bin\Debug\DomainObject.dll.config
+C:\Solutions\dbPankoves\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
+C:\Solutions\dbPankoves\UI\obj\Debug\dbPankovES.UI.AddGoodForm.resources
+C:\Solutions\dbPankoves\UI\obj\Debug\dbPankovES.UI.MenuForm.resources
+C:\Solutions\dbPankoves\UI\obj\Debug\dbPankovES.UI.ShowOrderGoodsForm.resources
+C:\Solutions\dbPankoves\UI\obj\Debug\dbPankovES.UI.ReportForm.resources
+C:\Solutions\dbPankoves\UI\obj\Debug\dbPankovES.UI.StatsForm.resources
+C:\Solutions\dbPankoves\UI\obj\Debug\dbPankovES.UI.SupplyForm.resources
+C:\Solutions\dbPankoves\UI\obj\Debug\dbPankovES.UI.ShowOrdersForm.resources
+C:\Solutions\dbPankoves\UI\obj\Debug\dbPankovES.UI.SellerForm.resources
+C:\Solutions\dbPankoves\UI\obj\Debug\dbPankovES.UI.LoginForm.resources
+C:\Solutions\dbPankoves\UI\obj\Debug\UI.csproj.GenerateResource.Cache
+C:\Solutions\dbPankoves\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
+C:\Solutions\dbPankoves\UI\obj\Debug\UI.dll
+C:\Solutions\dbPankoves\UI\obj\Debug\UI.pdb

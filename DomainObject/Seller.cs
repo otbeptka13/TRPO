@@ -266,6 +266,7 @@ namespace dbPankovES.DomainObject
         {
             try
             {
+                var errorMessage = string.Empty;
                 using (var reader = new StreamReader(fileStream))
                 {
                     var listSupply = new List<SupplyView>();
@@ -278,7 +279,7 @@ namespace dbPankovES.DomainObject
                         var str = reader.ReadLine();
                         all++;
                         var stArr = str.Trim().Split(';');
-                        if (stArr.Length == 5)
+                        //if (stArr.Length == 5)
                         {
                             try
                             {
@@ -318,8 +319,7 @@ namespace dbPankovES.DomainObject
                                     }
                                     else
                                     {
-                                        if (ErrorEvent != null)
-                                            ErrorEvent(this, new MessageEventArgs("Один из указанных ИД не определен в базе! Для: " + str));
+                                        errorMessage += "Один из указанных ИД не определен в базе! Для: " + str + Environment.NewLine;
                                     }
 
                                 }
@@ -327,18 +327,15 @@ namespace dbPankovES.DomainObject
                             }
                             catch (Exception ex)
                             {
-                                if (ErrorEvent != null)
-                                    ErrorEvent(this, new MessageEventArgs("Не удалось разобрать строчку " +
-                                        str + Environment.NewLine + " " + ex.Message));
-
+                                errorMessage += "Не удалось разобрать строчку \"" + str + "\" " + ex.Message + Environment.NewLine;
                             }
 
 
                         }
                     }
-                    if (listSupply.Count > 0 && good != listSupply.Count)
+                    if (listSupply.Count > 0 && good != all)
                         if (ErrorEvent != null)
-                            ErrorEvent(this, new MessageEventArgs("Загружено успешно " + good + " из " + all + " строк"));
+                            ErrorEvent(this, new MessageEventArgs(errorMessage+"Загружено успешно " + good + " из " + all + " строк транспортного файла."));
                     return listSupply.Count > 0 ? listSupply : null;
                 }
             }
